@@ -1,0 +1,24 @@
+.landing_page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+.landing_page h1 {
+  margin-bottom: 1rem;
+}
+.landing_page p {
+  margin-bottom: 2rem;
+}
+.landing_page .form_group {
+  display: flex;
+  flex-direction: column;
+}
+.landing_page .form_group div {
+  margin-bottom: 1rem;
+}
+.landing_page .submit_button {
+  margin-top: 1rem;
+}

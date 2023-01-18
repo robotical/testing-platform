@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1",
+    "name": "Project 1",
+    "description": "This is a project1",
+    "url": "https://marty-webapp--sensors-tuning-xr0mffdn.web.app/",
+    "phases": [
+      {
+        "instructions": {
+          "header": "Instruction 1",
+          "msgs": [
+            { "type": "info", "msg": "This is a info message" },
+            { "type": "success", "msg": "This is a success message" },
+            { "type": "error", "msg": "This is a error message" }
+          ]
+        },
+        "questionnaire": {
+          "header": "Questionnaire 1",
+          "qstns": [
+            {
+              "type": "likert",
+              "question": "How do you feel about this project?",
+              "options": [
+                { "id": "1", "text": "Very bad" },
+                { "id": "2", "text": "Bad" },
+                { "id": "3", "text": "Neutral" },
+                { "id": "4", "text": "Good" },
+                { "id": "5", "text": "Very good" }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "Project 2",
+    "description": "This is a project2",
+    "url": "https://marty-webapp--sensors-tuning-xr0mffdn.web.app/",
+    "instructions": [
+      {
+        "header": "Instruction 1",
+        "msgs": [
+          { "type": "info", "msg": "This is a info message" },
+          { "type": "success", "msg": "This is a success message" },
+          { "type": "error", "msg": "This is a error message" }
+        ]
+      }
+    ]
+  }
+]

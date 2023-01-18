@@ -1,0 +1,26 @@
+.header {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 2rem !important;
+  background: var(--info-color);
+  color: #fff;
+}
+.body {
+  margin-top: 1rem;
+}
+.msg {
+  display: flex;
+  gap: 5px;
+}
+
+.msg img {
+  width: 20px;
+  height: 20px;
+}
+
+.dialog_success {
+  background: var(--success-color) !important;
+}
+
+.dialog_info {
+  background: var(--info-color) !important;
+}

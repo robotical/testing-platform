@@ -1,0 +1,21 @@
+.testerPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+.testerPage h1 {
+  margin-bottom: 1rem;
+}
+.testerPage .form-group {
+  display: flex;
+  flex-direction: column;
+}
+.testerPage .form-group select {
+  margin-bottom: 1rem;
+}
+.testerPage .submit-button {
+  margin-top: 1rem;
+}

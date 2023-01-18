@@ -1,0 +1,13 @@
+.header {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 2rem !important;
+  background: var(--info-color);
+  color: #fff;
+}
+.body {
+  margin-top: 1rem;
+}
+.msg {
+  display: flex;
+  gap: 5px;
+}
