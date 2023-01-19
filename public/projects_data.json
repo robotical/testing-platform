@@ -1,32 +1,169 @@
 [
   {
-    "id": "1",
-    "name": "Project 1",
-    "description": "This is a project1",
+    "id": "Sensors Dashboard",
+    "name": "Sensors Dashboard",
+    "description": "The Marty sensor dashboard is a quick and easy way to view and capture sensor data from Marty. The dashboard displays both standard sensor and add-on data helping to introduce students to maths and physics topics. ",
     "url": "https://marty-webapp--sensors-tuning-xr0mffdn.web.app/",
     "phases": [
       {
         "instructions": {
-          "header": "Instruction 1",
+          "header": "Instructions",
           "msgs": [
-            { "type": "info", "msg": "This is a info message" },
-            { "type": "success", "msg": "This is a success message" },
-            { "type": "error", "msg": "This is a error message" }
+            {
+              "type": "info",
+              "msg": "This testing is to be conducted with functionality in mind only. We are in the early stages of the development and so are not looking for feedback on the aesthetic appeal or graphical fidelity."
+            },
+            {
+              "type": "info",
+              "msg": "Please complete all testing by the end of this week."
+            },
+            {
+              "type": "success",
+              "msg": "Press Next to start testing. Happy testing!"
+            }
           ]
         },
         "questionnaire": {
-          "header": "Questionnaire 1",
+          "header": "Are you ready?",
           "qstns": [
             {
               "type": "likert",
-              "question": "How do you feel about this project?",
+              "question": "Are you ready to start testing?",
               "options": [
-                { "id": "1", "text": "Very bad" },
-                { "id": "2", "text": "Bad" },
-                { "id": "3", "text": "Neutral" },
-                { "id": "4", "text": "Good" },
-                { "id": "5", "text": "Very good" }
+                { "id": "1", "text": "Yes" },
+                { "id": "2", "text": "No" }
               ]
+            }
+          ]
+        }
+      },
+      {
+        "instructions": {
+          "header": "Scenario 1",
+          "msgs": [
+            { "type": "info", "msg": "Please open the Sensors Dashboard." },
+            {
+              "type": "info",
+              "msg": "Try pausing and playing the graphs in a variety of orders."
+            },
+            {
+              "type": "info",
+              "msg": "Record if any of the graphs that you are not directly pausing/playing are effected. (E.g. pressing 'pause' on graph A pauses only graph A and not graph B"
+            },
+            {
+              "type": "success",
+              "msg": "The goal of this scenario is to test that there is no interference between graphs. We wish to ensure that each graph operates independently and cannot be effected by commands issued to alternate graphs.  "
+            }
+          ]
+        },
+        "questionnaire": {
+          "header": "Questionnaire",
+          "qstns": [
+            {
+              "type": "likert",
+              "question": "How intuitive was the interface?"
+            },
+            {
+              "type": "likert",
+              "question": "Functionally, was the interface easy to use?"
+            },
+            {
+              "type": "likert",
+              "question": "How complex you found the scenario?"
+            },
+            {
+              "type": "text",
+              "question": "Did you find any bugs or issues?"
+            },
+            {
+              "type": "text",
+              "question": "Other comments?"
+            }
+          ]
+        }
+      },
+      {
+        "instructions": {
+          "header": "Scenario 2",
+          "msgs": [
+            { "type": "info", "msg": "Clear everything from the last scenario and start with a blank figure." },
+            {
+              "type": "info",
+              "msg": "Capture the red/green/blue values of the colour sensor"
+            },
+            {
+              "type": "info",
+              "msg": "Place Marty on a green surface. Is the green trace value higher than the other two?"
+            },
+            {
+              "type": "info",
+              "msg": "Clean the graph you created."
+            }
+          ]
+        },
+        "questionnaire": {
+          "header": "Questionnaire",
+          "qstns": [
+            {
+              "type": "likert",
+              "question": "How intuitive was the interface?"
+            },
+            {
+              "type": "likert",
+              "question": "Functionally, was the interface easy to use?"
+            },
+            {
+              "type": "likert",
+              "question": "How complex you found the scenario?"
+            },
+            {
+              "type": "text",
+              "question": "Did you find any bugs or issues?"
+            },
+            {
+              "type": "text",
+              "question": "Other comments?"
+            }
+          ]
+        }
+      },
+      {
+        "instructions": {
+          "header": "General Feedback",
+          "msgs": [
+            { "type": "info", "msg": "Following, we'd like your opinion on a few general questions on the Sensors Dashboard" },
+            {
+              "type": "success",
+              "msg": "Click Next to continue"
+            }
+          ]
+        },
+        "questionnaire": {
+          "header": "Questionnaire",
+          "qstns": [
+            {
+              "type": "likert",
+              "question": "How much you enjoyed using the Dashboard?"
+            },
+            {
+              "type": "text",
+              "question": "Do you feel there is scope to expand the concept? If so, how?"
+            },
+            {
+              "type": "text",
+              "question": "Do you feel this product has limitation to its use?"
+            },
+            {
+              "type": "text",
+              "question": "What aspects of the product do you find most challenging?"
+            },
+            {
+              "type": "text",
+              "question": "What aspects of the product do you find most satisfactory?"
+            },
+            {
+              "type": "text",
+              "question": "Any other comment?"
             }
           ]
         }

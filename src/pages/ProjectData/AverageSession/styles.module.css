@@ -1,0 +1,48 @@
+.dashboard {
+    display: flex;
+    height: 100%;
+}
+.dashboard .sidebar {
+    width: 200px;
+    padding: 1rem;
+    background-color: #f5f5f5;
+    border-right: 1px solid #ccc;
+}
+.dashboard .sidebar .sidebarTitle {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.dashboard .sidebar .phaseButton {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    text-align: center;
+    background-color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.dashboard .sidebar .phaseButton.expanded {
+    background-color: #4285f4;
+    color: #fff;
+}
+.dashboard .sidebar .phaseButton:hover {
+    background-color: #eee;
+}
+.dashboard .main {
+    flex: 1;
+    padding: 1rem;
+    overflow: auto;
+}
+.dashboard .main .questions {
+    margin-bottom: 1rem;
+}
+.dashboard .main .questions .phaseTitle {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+.dashboard .main .questions .questionContent {
+    margin-left: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+}

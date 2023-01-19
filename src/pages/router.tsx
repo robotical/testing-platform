@@ -2,13 +2,16 @@ import { useSelector } from "react-redux";
 import { IRootState } from "../store";
 import LandingPage from "./LandingPage";
 import Tester from "./Tester";
+import ManagerProject from "./ManagerProjects";
+import Manager from "./Manager";
 import TestingProject from "./TestingProject";
+import ProjectData from "./ProjectData";
 
 export type RouteComponentType = {
     component: (props?: any) => JSX.Element;
   };
   
-export type RouteIdType = "landing-page" | "tester-index" | "manager-index" | "testing-project";
+export type RouteIdType = "landing-page" | "tester-index" | "manager-password" | "manager-index" | "testing-project" | "project-data";
 
 const ROUTES_MAP: { [key in RouteIdType]: RouteComponentType } = {
     "landing-page": {
@@ -17,11 +20,17 @@ const ROUTES_MAP: { [key in RouteIdType]: RouteComponentType } = {
     "tester-index": {
         component: Tester,
     },
+    "manager-password": {
+        component: Manager,
+    },
     "manager-index": {
-        component: Tester,
+        component: ManagerProject,
     },
     "testing-project": {
         component: TestingProject,
+    },
+    "project-data": {
+        component: ProjectData,
     },
 };
 

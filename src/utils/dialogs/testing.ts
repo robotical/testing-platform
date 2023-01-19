@@ -1,3 +1,4 @@
+import store from "../../store";
 import { DialogActionPayloadType } from "../../store/dialog-slice";
 import {
   QuestionnaireActionPayloadType,
@@ -28,25 +29,14 @@ export const generalTestInstructionsDialog = (
   };
 };
 
-export const finalQuestionnaire = (): QuestionnaireActionPayloadType => {
-  return {
-    header: "Final Questionnaire",
-    qstns: [
-      {
-        type: "likert",
-        question: "How much did you enjoy the testing?",
-      },
-    ],
-    next: { type: QuestionnaireNextEnum.DIALOG, next: thankingDialog() },
-  };
-};
 
 export const thankingDialog = (): DialogActionPayloadType => {
+  const sessionId = store.getState().sessionSlice.id;
   return {
     header: "Thank you for your participation!",
     msgs: [
       {
-        msg: `Thank you for your participation!`,
+        msg: `Thank you for your participation! Please take a note of your session id ${sessionId}. If for any reason you'd like to refer to your testing session you'll need to let us know this id.`,
         type: "success",
       },
     ],

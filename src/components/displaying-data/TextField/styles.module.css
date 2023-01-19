@@ -1,0 +1,13 @@
+.text-with-title {
+  width: 100%;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.text {
+  margin-top: 1rem;
+}

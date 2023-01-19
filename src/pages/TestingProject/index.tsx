@@ -8,11 +8,15 @@ import { useDispatch } from "react-redux";
 import { showDialog } from "../../store/dialog-slice";
 import DialogModal from "../../components/dialog-modal";
 import {
-  finalQuestionnaire,
   generalTestInstructionsDialog,
+  thankingDialog,
 } from "../../utils/dialogs/testing";
-import { QuestionnaireNextEnum, showQuestionnaire } from "../../store/questionnaire-slice";
+import {
+  QuestionnaireNextEnum,
+  showQuestionnaire,
+} from "../../store/questionnaire-slice";
 import QuestionnaireModal from "../../components/Questionnaire-modal";
+import { currentPhase, startSession } from "../../store/session-slice";
 
 export type TestingProjectProps = {
   project: ProjectDbType;
@@ -24,9 +28,12 @@ export default function TestingProject({ project }: TestingProjectProps) {
   const [currentDialog, setCurrentDialog] = useState(
     generalTestInstructionsDialog(project.name, project.phases[0].instructions)
   );
-  const [currentPhaseIdx, setCurrentPhaseIdx] = useState(0);
 
   useEffect(() => {
+    // start session
+    dispatch(startSession({ phases: project.phases, project: project.name }));
+
+    // show first dialog
     dispatch(showDialog(currentDialog));
   }, []);
 
@@ -35,19 +42,18 @@ export default function TestingProject({ project }: TestingProjectProps) {
   };
 
   const nextHandler = () => {
-    const currentPhaseNewIdx = currentPhaseIdx + 1;
+    const currentPhaseNewIdx = currentPhase + 1;
     const isThereAnotherPhase = !!project.phases[currentPhaseNewIdx];
     const newInstructions = project.phases[currentPhaseNewIdx]?.instructions;
     const next = isThereAnotherPhase
       ? { type: QuestionnaireNextEnum.DIALOG, next: newInstructions }
-      : { type: QuestionnaireNextEnum.QUESTIONNAIRE, next: finalQuestionnaire() };
+      : { type: QuestionnaireNextEnum.DIALOG, next: thankingDialog() };
     dispatch(
       showQuestionnaire({
-        ...project.phases[currentPhaseIdx].questionnaire,
+        ...project.phases[currentPhase].questionnaire,
         next,
       })
     );
-    setCurrentPhaseIdx(currentPhaseNewIdx);
     isThereAnotherPhase &&
       setCurrentDialog(project.phases[currentPhaseNewIdx].instructions);
   };

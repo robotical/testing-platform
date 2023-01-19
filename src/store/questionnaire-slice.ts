@@ -1,12 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { AnswerType } from "../interfaces/answers";
 import { DialogActionPayloadType } from "./dialog-slice";
 
-export type QuestionType = "likert" | "boolean" | "multiple-choice" | "text";
+export type QuestionType = "likert" | "text";
+
+export type QuestionOptionsType = {
+  id: string;
+  text: string;
+};
 
 export type QstnsType = {
   type: QuestionType;
   question: string;
-  options?: { id: string; text: string }[];
+  options?: QuestionOptionsType[];
 };
 
 export enum QuestionnaireNextEnum {
@@ -34,6 +40,7 @@ type QhowquestionnaireActionType = {
 export type QuestionnaireActionPayloadType = {
   header: string;
   qstns: QstnsType[];
+  answers?: AnswerType[];
   next?: { type: QuestionnaireNextEnum; next: DialogActionPayloadType | QuestionnaireActionPayloadType };
 };
 

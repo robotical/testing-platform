@@ -3,7 +3,6 @@ import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import { useSelector, useDispatch } from "react-redux";
@@ -15,6 +14,10 @@ import {
 import styles from "./styles.module.css";
 import { IRootState } from "../../store";
 import { DialogActionPayloadType, showDialog } from "../../store/dialog-slice";
+import Question from "../questionnaire/Question";
+import { currentPhase, setAnswers, setCurrentPhase } from "../../store/session-slice";
+import { AnswerType } from "../../interfaces/answers";
+import { areAllQuestionsAnswered } from "../../utils/answers";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   // @ts-ignore
@@ -23,7 +26,25 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function QuestionnaireModal() {
   const dispatch = useDispatch();
-  const { questionnaire } = useSelector((state: IRootState) => ({ ...state }));
+  const { questionnaire, sessionSlice } = useSelector((state: IRootState) => ({
+    ...state,
+  }));
+
+  React.useEffect(() => {
+    // this is where the tester's starting the questionnaire
+    // prepopulate answers
+    if (questionnaire.qstns && questionnaire.qstns.length > 0) {
+      const answrs: AnswerType[] = questionnaire.qstns.map((question) => {
+        return {
+          question: question,
+          sessionId: sessionSlice.id,
+          answer: "",
+          type: question.type,
+        } as AnswerType;
+      });
+      dispatch(setAnswers({ answers: answrs }));
+    }
+  }, [questionnaire.show]);
 
   const handleClose = (
     event: {},
@@ -32,16 +53,31 @@ export default function QuestionnaireModal() {
     if (reason === "backdropClick" || reason === "escapeKeyDown") {
       return;
     }
+    if (
+      !areAllQuestionsAnswered(sessionSlice.phases[currentPhase].questionnaire.answers || [])
+    ) {
+      // if not all questions are answered return
+      alert("Please answer all questions");
+      return;
+    }
+
     if (questionnaire.next) {
       if (questionnaire.next.type === "dialog") {
         dispatch(hideQuestionnaire({}));
-        dispatch(showDialog(questionnaire.next.next as DialogActionPayloadType));
+        dispatch(
+          showDialog(questionnaire.next.next as DialogActionPayloadType)
+        );
       } else if (questionnaire.next.type === "questionnaire") {
-        dispatch(showQuestionnaire(questionnaire.next.next as QuestionnaireActionPayloadType));
+        dispatch(
+          showQuestionnaire(
+            questionnaire.next.next as QuestionnaireActionPayloadType
+          )
+        );
       }
     } else {
       dispatch(hideQuestionnaire({}));
     }
+    setCurrentPhase(currentPhase + 1);
   };
 
   return (
@@ -67,17 +103,7 @@ export default function QuestionnaireModal() {
         <DialogContent className={styles.body}>
           {questionnaire.qstns &&
             questionnaire.qstns.map((question, i) => (
-              <DialogContentText
-                className={styles.question}
-                id="alert-dialog-slide-description"
-                key={i}
-              >
-                <span>{question.question}</span>
-                {question.options &&
-                  question.options.map((option, j) => (
-                    <span key={option.id + j}>{option.text}</span>
-                  ))}
-              </DialogContentText>
+              <Question key={i} question={question} questionIdx={i} />
             ))}
         </DialogContent>
         <DialogActions>

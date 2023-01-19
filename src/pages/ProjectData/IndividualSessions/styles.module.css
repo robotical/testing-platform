@@ -1,0 +1,80 @@
+.dashboard {
+    display: flex;
+  }
+  .dashboard .sidebar {
+    width: 20%;
+    padding: 1rem;
+    border-right: 1px solid #ccc;
+  }
+  .dashboard .sidebar .sidebarTitle {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .dashboard .sidebar .sessionButton {
+    width: 100%;
+    padding: 0.5rem;
+    text-align: left;
+    border: none;
+    background-color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  .dashboard .sidebar .sessionButton.selected {
+    background-color: #4285f4;
+    color: #fff;
+  }
+  .dashboard .sidebar .sessionButton:hover {
+    background-color: #eee;
+  }
+  .dashboard .main {
+    width: 80%;
+    padding: 1rem;
+  }
+  .dashboard .main .mainTitle {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .dashboard .main .phaseButton {
+    width: 100%;
+    padding: 0.5rem;
+    text-align: left;
+    border: none;
+    background-color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  .dashboard .main .phaseButton.expanded {
+    background-color: #4285f4;
+    color: #fff;
+  }
+  .dashboard .main .phaseButton:hover {
+    background-color: #eee;
+  }
+  .dashboard .main .questions {
+    margin-left: 1rem;
+  }
+  .dashboard .main .questions .questionButton {
+    width: 100%;
+    padding: 0.5rem;
+    text-align: left;
+    border: none;
+    background-color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  .dashboard .main .questions .questionButton.selected {
+    background-color: #4285f4;
+    color: #fff;
+  }
+  .dashboard .main .questions .questionButton:hover {
+    background-color: #eee;
+  }
+  .dashboard .main .questions .questionContent {
+    margin-left: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+  }
+  

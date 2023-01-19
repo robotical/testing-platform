@@ -1,14 +1,16 @@
 .radioButtonWrapper {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
-  
-  .radioButtonInput {
-    margin-right: 0.5rem;
-  }
-  
-  .radioButtonLabel {
-    font-size: var(--primary-font-size);
-  }
-  
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.radioButtonInput {
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.radioButtonLabel {
+  font-size: var(--primary-font-size);
+  cursor: pointer;
+}
