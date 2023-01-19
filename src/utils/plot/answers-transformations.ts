@@ -1,10 +1,10 @@
-import { AnswerToPlotType, AnswerType } from "../../interfaces/answers";
+import { AnswerType } from "../../interfaces/answers";
 
-export const answerToPlotData = (answer: AnswerType): AnswerToPlotType => {
+export const answerToPlotData = (answer: AnswerType): AnswerType => {
   return {
     sessionId: answer.sessionId,
     question: JSON.parse(JSON.stringify(answer.question)),
-    answer: [answer.answer],
+    answer: [answer.answer as string],
     type: answer.type,
   };
 };

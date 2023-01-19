@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AnswerToPlotType } from "../../../interfaces/answers";
+import { AnswerType } from "../../../interfaces/answers";
 import { DbProject } from "../../../interfaces/sessions";
 import { QuestionnaireActionPayloadType } from "../../../store/questionnaire-slice";
 import { answerToPlotData } from "../../../utils/plot/answers-transformations";
@@ -8,15 +8,17 @@ import styles from "./styles.module.css";
 
 export type IndividualSessionsProps = {
   project: DbProject;
+  type: "individual" | "average";
 };
 
 export default function IndividualSessions({
   project,
+  type
 }: IndividualSessionsProps) {
   const [selectedSession, setSelectedSession] = useState<string>();
   const [expandedPhases, setExpandedPhases] = useState<string[]>([]);
   const [selectedQuestion, setSelectedQuestion] = useState<string>();
-  const [selectedAnswer, setSelectedAnswer] = useState<AnswerToPlotType>();
+  const [selectedAnswer, setSelectedAnswer] = useState<AnswerType>();
 
   const handleSelectSession = (sessionId: string) => {
     setSelectedSession(sessionId);
@@ -41,7 +43,12 @@ export default function IndividualSessions({
     setSelectedQuestion(questionId);
     if (questionnaire.answers) {
       // transform answers to plot data
-      const plotData = answerToPlotData(questionnaire.answers[questionIndex]);
+      let plotData;
+      if (type === "average") {
+        plotData = questionnaire.answers[questionIndex];
+      } else {
+        plotData = answerToPlotData(questionnaire.answers[questionIndex]);
+      }
       setSelectedAnswer(plotData);
     }
   };
@@ -67,7 +74,8 @@ export default function IndividualSessions({
           {selectedSession && (
             <>
               <h2 className={styles.mainTitle}>
-                {project[selectedSession].project}
+                {selectedSession} duration to complete:{" "}
+                {project[selectedSession]?.durationInMins.toFixed(2)} mins
               </h2>
               {project[selectedSession].phases.map((phase, index) => (
                 <div key={index}>

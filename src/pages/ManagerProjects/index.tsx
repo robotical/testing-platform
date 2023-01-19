@@ -34,7 +34,7 @@ export default function ManagerProjects() {
 
   return (
     <div className={styles.managerPage}>
-      <h1>Select a Project to Test</h1>
+      <h1>Select a Project to View data for</h1>
       <form onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
           {projects.map((project, idx) => (
@@ -51,7 +51,7 @@ export default function ManagerProjects() {
           ))}
         </div>
         <button type="submit" className={styles.submitButton}>
-          Start Testing
+          View data
         </button>
       </form>
     </div>

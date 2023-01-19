@@ -1,6 +1,13 @@
-const getFrequency = (arr: string[]) => arr.reduce((freq, item) => {
-    freq[item] = (freq[item] || 0) + 1;
-    return freq;
-}, {} as { [key: string]: number });
-
-export default getFrequency;
+export default function getFrequency(
+  arr: string[]
+): { [key: string]: number } {
+  const frequency: { [key: string]: number } = {};
+  arr.forEach((element) => {
+    if (frequency[element] === undefined) {
+      frequency[element] = 1;
+    } else {
+      frequency[element] += 1;
+    }
+  });
+  return frequency;
+}

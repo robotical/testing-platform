@@ -1,48 +1,126 @@
 import { useState } from "react";
+import { AnswerType } from "../../../interfaces/answers";
 import { DbProject } from "../../../interfaces/sessions";
+import { QuestionnaireActionPayloadType } from "../../../store/questionnaire-slice";
+import { answerToPlotData } from "../../../utils/plot/answers-transformations";
+import PlotData from "../PlotData";
+import styles from "./styles.module.css";
 
-interface AverageSessionDashboardProps {
-    project: DbProject;
-  }
-  
-  export default function AverageSessionDashboard ({ project }:AverageSessionDashboardProps)  {
-    const [expandedPhases, setExpandedPhases] = useState<number[]>([]);
-  
-    const handleSelectPhase = (phaseIndex: number) => {
-      if (expandedPhases.includes(phaseIndex)) {
-        setExpandedPhases(expandedPhases.filter((i) => i !== phaseIndex));
-      } else {
-        setExpandedPhases([...expandedPhases, phaseIndex]);
-      }
-    };
-  
-    return (
-      <div className="dashboard">
-        <div className="sidebar">
-          <h3 className="sidebarTitle">Average Session</h3>
-          {project[Object.keys(project)[0]].phases.map((phase, index) => (
+export type IndividualSessionsProps = {
+  project: DbProject;
+};
+
+export default function IndividualSessions({
+  project,
+}: IndividualSessionsProps) {
+  const [selectedSession, setSelectedSession] = useState<string>();
+  const [expandedPhases, setExpandedPhases] = useState<string[]>([]);
+  const [selectedQuestion, setSelectedQuestion] = useState<string>();
+  const [selectedAnswer, setSelectedAnswer] = useState<AnswerType>();
+
+  const handleSelectSession = (sessionId: string) => {
+    setSelectedSession(sessionId);
+    setExpandedPhases([]);
+  };
+
+  const handleSelectPhase = (phaseId: string) => {
+    if (expandedPhases.includes(phaseId)) {
+      setExpandedPhases(expandedPhases.filter((id) => id !== phaseId));
+    } else {
+      setExpandedPhases([...expandedPhases, phaseId]);
+    }
+  };
+
+  const handleSelectQuestion = (
+    sessionString: string,
+    phaseIndex: number,
+    questionIndex: number,
+    questionnaire: QuestionnaireActionPayloadType
+  ) => {
+    const questionId = `${sessionString}-${phaseIndex}-${questionIndex}`;
+    setSelectedQuestion(questionId);
+    if (questionnaire.answers) {
+      // transform answers to plot data
+      const plotData = answerToPlotData(questionnaire.answers[questionIndex]);
+      setSelectedAnswer(plotData);
+    }
+  };
+
+  return (
+    <>
+      <div className={styles.dashboard}>
+        <div className={styles.sidebar}>
+          <h2 className={styles.sidebarTitle}>Sessions</h2>
+          {Object.keys(project).map((sessionId) => (
             <button
-              key={index}
-              className={`phaseButton ${expandedPhases.includes(index) && 'expanded'}`}
-              onClick={() => handleSelectPhase(index)}
+              key={sessionId}
+              className={`${styles.sessionButton} ${
+                sessionId === selectedSession ? styles.selected : ""
+              }`}
+              onClick={() => handleSelectSession(sessionId)}
             >
-              Phase {index + 1}
+              {sessionId}
             </button>
           ))}
         </div>
-        <div className="main">
-          {expandedPhases.map((phaseIndex) => (
-            <div key={phaseIndex} className="questions">
-              <h4 className="phaseTitle">Phase {phaseIndex + 1}</h4>
-              {project[Object.keys(project)[0]].phases[phaseIndex].questionnaire.qstns.map((question, index) => (
-                <div key={index} className="questionContent">
-                  {/* render question */}
+        <div className={styles.main}>
+          {selectedSession && (
+            <>
+              <h2 className={styles.mainTitle}>
+                {selectedSession} duration to complete: {project[selectedSession].durationInMins.toFixed(2)} mins
+              </h2>
+              {project[selectedSession].phases.map((phase, index) => (
+                <div key={index}>
+                  <button
+                    className={`${styles.phaseButton} ${
+                      expandedPhases.includes(
+                        `${selectedSession}-phase-${index}`
+                      )
+                        ? styles.expanded
+                        : ""
+                    }`}
+                    onClick={() =>
+                      handleSelectPhase(`${selectedSession}-phase-${index}`)
+                    }
+                  >
+                    Phase {index + 1}
+                  </button>
+                  {expandedPhases.includes(
+                    `${selectedSession}-phase-${index}`
+                  ) && (
+                    <div className={styles.questions}>
+                      {phase.questionnaire.qstns.map((question, qIndex) => (
+                        <button
+                          key={qIndex}
+                          className={`${styles.questionButton} ${
+                            `${selectedSession}-${index}-${qIndex}` ===
+                            selectedQuestion
+                              ? styles.selected
+                              : ""
+                          }`}
+                          onClick={() =>
+                            handleSelectQuestion(
+                              selectedSession,
+                              index,
+                              qIndex,
+                              phase.questionnaire
+                            )
+                          }
+                        >
+                          {qIndex + 1}) {question.question}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
-            </div>
-          ))}
+            </>
+          )}
         </div>
       </div>
-    );
-  };
-  
+      <div className={styles.data_area}>
+        {selectedAnswer && <PlotData answerData={selectedAnswer} />}
+      </div>
+    </>
+  );
+}

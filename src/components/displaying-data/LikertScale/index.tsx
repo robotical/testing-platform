@@ -23,7 +23,7 @@ const BarGraph: React.FC<Props> = ({ categories, title, answers }) => {
         // if no categories, use fallback values
         plotCategories = DEFAULT_OPTIONS.map((category) => category.text);
     }
-
+    
     // transform answers to frequency object
     const answersFreq = getFrequency(answers);
     // transform frequency object to array with the same order as the categories

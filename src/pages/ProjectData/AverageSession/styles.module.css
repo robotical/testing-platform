@@ -1,48 +1,80 @@
 .dashboard {
     display: flex;
-    height: 100%;
-}
-.dashboard .sidebar {
-    width: 200px;
+  }
+  .dashboard .sidebar {
+    width: 20%;
     padding: 1rem;
-    background-color: #f5f5f5;
     border-right: 1px solid #ccc;
-}
-.dashboard .sidebar .sidebarTitle {
+  }
+  .dashboard .sidebar .sidebarTitle {
     text-align: center;
     margin-bottom: 1rem;
-}
-.dashboard .sidebar .phaseButton {
-    display: block;
+  }
+  .dashboard .sidebar .sessionButton {
     width: 100%;
     padding: 0.5rem;
-    text-align: center;
+    text-align: left;
+    border: none;
     background-color: #fff;
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.2s;
-}
-.dashboard .sidebar .phaseButton.expanded {
+  }
+  .dashboard .sidebar .sessionButton.selected {
     background-color: #4285f4;
     color: #fff;
-}
-.dashboard .sidebar .phaseButton:hover {
+  }
+  .dashboard .sidebar .sessionButton:hover {
     background-color: #eee;
-}
-.dashboard .main {
-    flex: 1;
+  }
+  .dashboard .main {
+    width: 80%;
     padding: 1rem;
-    overflow: auto;
-}
-.dashboard .main .questions {
-    margin-bottom: 1rem;
-}
-.dashboard .main .questions .phaseTitle {
+  }
+  .dashboard .main .mainTitle {
     text-align: center;
-    margin-bottom: 0.5rem;
-}
-.dashboard .main .questions .questionContent {
+    margin-bottom: 1rem;
+  }
+  .dashboard .main .phaseButton {
+    width: 100%;
+    padding: 0.5rem;
+    text-align: left;
+    border: none;
+    background-color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  .dashboard .main .phaseButton.expanded {
+    background-color: #4285f4;
+    color: #fff;
+  }
+  .dashboard .main .phaseButton:hover {
+    background-color: #eee;
+  }
+  .dashboard .main .questions {
+    margin-left: 1rem;
+  }
+  .dashboard .main .questions .questionButton {
+    width: 100%;
+    padding: 0.5rem;
+    text-align: left;
+    border: none;
+    background-color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  .dashboard .main .questions .questionButton.selected {
+    background-color: #4285f4;
+    color: #fff;
+  }
+  .dashboard .main .questions .questionButton:hover {
+    background-color: #eee;
+  }
+  .dashboard .main .questions .questionContent {
     margin-left: 1rem;
     padding: 1rem;
     border: 1px solid #ccc;
-}
+  }
+  

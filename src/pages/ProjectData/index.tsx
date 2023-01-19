@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { DbProject } from "../../interfaces/sessions";
-import AverageSession from "./AverageSession";
+import convertProjectType from "../../utils/get-average-session";
 import IndividualSessions from "./IndividualSessions";
-import styles from "./styles.module.css";
 
 export type ProjectDataProps = {
   project: DbProject;
@@ -15,7 +14,7 @@ export default function ProjectData ({ project }: ProjectDataProps) {
   return (
     <div className="dashboard-layout">
       <header className="header">
-        <h1 className="title">Dashboard</h1>
+        <h1 className="title">{project[Object.keys(project)[0]].project}</h1>
         <div className="view-toggle">
           <button
             className={`all-sessions-btn ${view === "all" && "active"}`}
@@ -33,9 +32,9 @@ export default function ProjectData ({ project }: ProjectDataProps) {
       </header>
       <div className="main-content">
         {view === "all" ? (
-          <IndividualSessions project={project} />
+          <IndividualSessions project={project} type="individual"  key={new Date().getTime() + "ALL"}/>
         ) : (
-          <AverageSession project={project} />
+          <IndividualSessions project={convertProjectType(project)} type="average" key={new Date().getTime() + "INDIV"}/>
         )}
       </div>
     </div>
