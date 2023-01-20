@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { hideDialog, showDialog } from "../../store/dialog-slice";
 import styles from "./styles.module.css";
 import { IRootState } from "../../store";
+import { currentPhase } from "../../store/session-slice";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   // @ts-ignore
@@ -18,7 +19,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function DialogModal() {
   const dispatch = useDispatch();
-  const { dialog } = useSelector((state: IRootState) => ({ ...state }));
+  const { dialog, sessionSlice } = useSelector((state: IRootState) => ({ ...state }));
 
   const handleClose = (
     event: {},
@@ -55,7 +56,7 @@ export default function DialogModal() {
           className={`${styles.header} ${styles.dialog_info}`}
           fontSize={"20px"}
         >
-          {dialog.header}
+          {dialog.header} (Completed: {Math.round(currentPhase / sessionSlice.phases.length * 100)}%)
         </DialogTitle>
         <DialogContent className={styles.body}>
           {dialog.msgs &&

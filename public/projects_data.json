@@ -15,7 +15,7 @@
             },
             {
               "type": "info",
-              "msg": "Please complete all testing by the end of this week."
+              "msg": "Withe the instructions, there are x phases in Total. Please complete all of them."
             },
             {
               "type": "success",

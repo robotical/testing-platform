@@ -26,6 +26,16 @@
   font-size: medium;
 }
 
+.expandableTestingMenuHeader h1 {
+  display: inline-block;
+}
+
+.expandableTestingMenuHeader h3 {
+  display: inline-block;
+  margin-left: 0.5rem;
+  color: #999;
+}
+
 .expandableTestingMenuContent {
   grid-area: content;
   display: grid;
