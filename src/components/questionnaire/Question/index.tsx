@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { QstnsType } from "../../../store/questionnaire-slice";
 import { setAnswer } from "../../../store/session-slice";
 import Likert from "../../form/Likert";
+import MultipleChoice from "../../form/MultipleChoice";
 import TextArea from "../../form/TextArea/indext";
 import styles from "./styles.module.css";
 
@@ -13,7 +14,9 @@ type QuestionProps = {
 export default function Question({ question, questionIdx }: QuestionProps) {
   const dispatch = useDispatch();
 
-  const handleQuestionChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleQuestionChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     dispatch(setAnswer({ answer: e.target.value, answerIdx: questionIdx }));
   };
 
@@ -33,6 +36,16 @@ export default function Question({ question, questionIdx }: QuestionProps) {
         <Likert
           question={question.question}
           options={question.options}
+          onChange={handleQuestionChange}
+          answerIdx={questionIdx}
+        />
+      );
+      break;
+    case "multiple":
+      questionTypeJSX = (
+        <MultipleChoice
+          question={question.question}
+          options={question.options!}
           onChange={handleQuestionChange}
           answerIdx={questionIdx}
         />

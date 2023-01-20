@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { AnswerType } from "../interfaces/answers";
 import { DialogActionPayloadType } from "./dialog-slice";
 
-export type QuestionType = "likert" | "text";
+export type QuestionType = "likert" | "text" | "multiple";
 
 export type QuestionOptionsType = {
   id: string;

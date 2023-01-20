@@ -1,6 +1,6 @@
 import { AnswerType } from "../../interfaces/answers";
 
-export const answerToPlotData = (answer: AnswerType): AnswerType => {
+export const stringAnswerToArray = (answer: AnswerType): AnswerType => {
   return {
     sessionId: answer.sessionId,
     question: JSON.parse(JSON.stringify(answer.question)),

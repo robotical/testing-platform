@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AnswerType } from "../../../interfaces/answers";
 import { DbProject } from "../../../interfaces/sessions";
 import { QuestionnaireActionPayloadType } from "../../../store/questionnaire-slice";
-import { answerToPlotData } from "../../../utils/plot/answers-transformations";
+import { stringAnswerToArray } from "../../../utils/plot/answers-transformations";
 import PlotData from "../PlotData";
 import styles from "./styles.module.css";
 
@@ -44,10 +44,10 @@ export default function IndividualSessions({
     if (questionnaire.answers) {
       // transform answers to plot data
       let plotData;
-      if (type === "average") {
+      if (typeof questionnaire.answers[questionIndex].answer === "object") {
         plotData = questionnaire.answers[questionIndex];
       } else {
-        plotData = answerToPlotData(questionnaire.answers[questionIndex]);
+        plotData = stringAnswerToArray(questionnaire.answers[questionIndex]);
       }
       setSelectedAnswer(plotData);
     }

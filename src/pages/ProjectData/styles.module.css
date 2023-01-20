@@ -1,4 +1,4 @@
-.dashboard-layout {
+.dashboard_layout {
   width: 100%;
   height: 100%;
 }
@@ -18,12 +18,12 @@
   margin: 0;
 }
 
-.view-toggle {
+.view_toggle {
   display: flex;
 }
 
-.all-sessions-btn,
-.average-session-btn {
+.all_sessions_btn,
+.average_session_btn {
   padding: 0.5rem 1rem;
   background-color: #fff;
   border: 1px solid #ccc;
@@ -32,18 +32,18 @@
   transition: background-color 0.2s;
 }
 
-.all-sessions-btn.active,
-.average-session-btn.active {
+.all_sessions_btn.active,
+.average_session_btn.active {
   background-color: #4285f4;
   color: #fff;
 }
 
-.all-sessions-btn:hover,
-.average-session-btn:hover {
+.all_sessions_btn:hover,
+.average_session_btn:hover {
   background-color: #eee;
 }
 
-.main-content {
+.main_content {
   flex: 1;
   padding: 1rem;
   overflow: auto;

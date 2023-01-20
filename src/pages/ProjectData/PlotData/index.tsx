@@ -14,14 +14,15 @@ export default function PlotData({ answerData }: PlotDatProps) {
       displayDataJSX = (
         <TextWithTitle
           title={answerData.question.question}
-          text={answerData.answer as string []}
+          text={answerData.answer as string[]}
         />
       );
       break;
     case "likert":
+    case "multiple":
       displayDataJSX = (
         <BarGraph
-          answers={answerData.answer as string []}
+          answers={answerData.answer as string[]}
           categories={answerData.question.options}
           title={answerData.question.question}
         />

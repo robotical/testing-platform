@@ -3,6 +3,7 @@ import store from ".";
 import DatabaseManager from "../db/DatabaseManager";
 import { AnswerType } from "../interfaces/answers";
 import { PhaseType } from "../interfaces/project";
+import multipleAnswerHandler from "../utils/mutliple-answer-handler";
 import randomHash from "../utils/random-hash-generator";
 
 export let currentPhase = 0;
@@ -77,7 +78,8 @@ export const SessionSlice = createSlice({
       state.endTime = JSON.stringify(new Date());
       const parsedStartTime = new Date(JSON.parse(state.startTime));
       const parsedEndTime = new Date(JSON.parse(state.endTime));
-      state.durationInMins = (parsedEndTime.getTime() - parsedStartTime.getTime()) / 1000 / 60;
+      state.durationInMins =
+        (parsedEndTime.getTime() - parsedStartTime.getTime()) / 1000 / 60;
       state.finished = true;
       DatabaseManager.saveSession(state);
     },
@@ -90,8 +92,20 @@ export const SessionSlice = createSlice({
 
     setAnswer(state, action: SetAnswerAction) {
       const answerIdx = action.payload.answerIdx;
-      state.phases[currentPhase].questionnaire.answers![answerIdx].answer =
-        action.payload.answer;
+      if (
+        // if the answer is multiple choice
+        state.phases[currentPhase].questionnaire.answers![answerIdx].type ===
+        "multiple"
+      ) {
+        multipleAnswerHandler(
+          state.phases[currentPhase].questionnaire.answers![answerIdx],
+          action.payload.answer
+        );
+      } else {
+        // if the answer is not multiple choice
+        state.phases[currentPhase].questionnaire.answers![answerIdx].answer =
+          action.payload.answer;
+      }
     },
   },
 });

@@ -1,0 +1,16 @@
+.multipleChoice {
+
+}
+
+.question {
+
+}
+
+.options {
+
+}
+
+.option {
+    display: flex;
+    column-gap: 0.5rem;
+}

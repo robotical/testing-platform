@@ -29,8 +29,8 @@ function transformProject(project: DbProject): DbProject {
   averageSession["average"].durationInMins = averageDuration;
 
   // remove all answers from the average session
-  const session = averageSession["average"];
-  session.phases.forEach((phase) => {
+  const avgSession = averageSession["average"];
+  avgSession.phases.forEach((phase) => {
     phase.questionnaire.answers?.forEach((answer) => {
       answer.answer = [];
     });

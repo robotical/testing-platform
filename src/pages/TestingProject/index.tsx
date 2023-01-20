@@ -74,7 +74,7 @@ export default function TestingProject({ project }: TestingProjectProps) {
           </div>
         </div>
       </ExpandableTestingMenu>
-      <iframe className={styles.iframe} src={project.url} title="Project" />
+      <iframe className={styles.iframe} src={project.url} title="Project" allow="bluetooth"/>
     </div>
   );
 }

@@ -28,10 +28,9 @@
           "qstns": [
             {
               "type": "likert",
-              "question": "Are you ready to start testing?",
+              "question": "When you are ready, select Ready and press Next to begin testing.",
               "options": [
-                { "id": "1", "text": "Yes" },
-                { "id": "2", "text": "No" }
+                { "id": "1", "text": "Ready" }
               ]
             }
           ]
@@ -39,20 +38,16 @@
       },
       {
         "instructions": {
-          "header": "Scenario 1",
+          "header": "Scenario 0",
           "msgs": [
-            { "type": "info", "msg": "Please open the Sensors Dashboard." },
+            { "type": "info", "msg": "Please connect to your Marty and open the Sensors Dashboard." },
             {
               "type": "info",
-              "msg": "Try pausing and playing the graphs in a variety of orders."
-            },
-            {
-              "type": "info",
-              "msg": "Record if any of the graphs that you are not directly pausing/playing are effected. (E.g. pressing 'pause' on graph A pauses only graph A and not graph B"
+              "msg": "Press the HELP button on the top of the screen an read the Sensors Dashboard instructions."
             },
             {
               "type": "success",
-              "msg": "The goal of this scenario is to test that there is no interference between graphs. We wish to ensure that each graph operates independently and cannot be effected by commands issued to alternate graphs.  "
+              "msg": "The goal of this scenario is get you familiarised with the functionality and interface of the project."
             }
           ]
         },
@@ -61,11 +56,57 @@
           "qstns": [
             {
               "type": "likert",
-              "question": "How intuitive was the interface?"
+              "question": "Were the instructions clear enough?"
             },
             {
+              "type": "text",
+              "question": "If not, what can be changed?"
+            },
+            {
+              "type": "text",
+              "question": "Other comments?"
+            }
+          ]
+        }
+      },
+      {
+        "instructions": {
+          "header": "Scenario 1",
+          "msgs": [
+            { "type": "info", "msg": "Clear everything from the last scenario and start with a blank figure." },
+            {
+              "type": "info",
+              "msg": "Capture the red/green/blue values of the colour sensor"
+            },
+            {
+              "type": "info",
+              "msg": "Place Marty on a green surface. Is the green trace value higher than the other two?"
+            },
+            {
+              "type": "info",
+              "msg": "Clean the graph you created."
+            }
+          ]
+        },
+        "questionnaire": {
+          "header": "Questionnaire",
+          "qstns": [
+            {
               "type": "likert",
-              "question": "Functionally, was the interface easy to use?"
+              "question": "How intuitive is the interface?"
+            },
+            {
+              "type": "text",
+              "question": "If it is not, what can be changed?"
+            },
+            {
+              "type": "multiple",
+              "question": "Which value was higher when you were doing the experiment?",
+              "options": [
+                { "id": "1", "text": "Red" },
+                { "id": "2", "text": "Green" },
+                { "id": "3", "text": "Blue" }
+              ]
             },
             {
               "type": "likert",
@@ -86,18 +127,18 @@
         "instructions": {
           "header": "Scenario 2",
           "msgs": [
-            { "type": "info", "msg": "Clear everything from the last scenario and start with a blank figure." },
+            { "type": "info", "msg": "Please open the Sensors Dashboard." },
             {
               "type": "info",
-              "msg": "Capture the red/green/blue values of the colour sensor"
+              "msg": "Try pausing and playing the graphs in a variety of orders."
             },
             {
               "type": "info",
-              "msg": "Place Marty on a green surface. Is the green trace value higher than the other two?"
+              "msg": "Record if any of the graphs that you are not directly pausing/playing are effected. (E.g. pressing 'pause' on graph A pauses only graph A and not graph B"
             },
             {
-              "type": "info",
-              "msg": "Clean the graph you created."
+              "type": "success",
+              "msg": "The goal of this scenario is to test that there is no interference between graphs. We wish to ensure that each graph operates independently and cannot be effected by commands issued to alternate graphs.  "
             }
           ]
         },
