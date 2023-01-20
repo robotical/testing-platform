@@ -18,7 +18,7 @@ const LandingPage = () => {
     if (userRole === 'tester') {
       dispatch(setRouter({ id: "tester-index" }));
     } else {
-      dispatch(setRouter({ id: "manager-index" }));
+      dispatch(setRouter({ id: "manager-password" }));
     }
   };
 

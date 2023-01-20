@@ -10,6 +10,8 @@ A platform for testing various projects and gathering data through questionnaire
 * Testers can go through various scenarios and fill out questionnaires
 * Manager section for viewing collected data (password: martyRocks)
 * Uses Firebase database to store testing sessions
+* Does not require maintenance or development work when adding new projects
+* projects as JSON file 
 
 ### GitHub Actions
 * versioning: runs on push and merge to main branch

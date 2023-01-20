@@ -9,12 +9,12 @@
 }
 .msg {
   display: flex;
-  gap: 5px;
+  gap: 10px;
 }
 
 .msg img {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
 }
 
 .dialog_success {

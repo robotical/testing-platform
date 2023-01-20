@@ -20,10 +20,13 @@ export default function DialogModal() {
   const dispatch = useDispatch();
   const { dialog } = useSelector((state: IRootState) => ({ ...state }));
 
-  const handleClose = (event: {}, reason: "backdropClick" | "escapeKeyDown" | "closeClick") => {
+  const handleClose = (
+    event: {},
+    reason: "backdropClick" | "escapeKeyDown" | "closeClick"
+  ) => {
     if (reason === "backdropClick" || reason === "escapeKeyDown") {
       return;
-    } 
+    }
     if (dialog.next) {
       dispatch(showDialog({ ...dialog.next }));
     } else {
@@ -48,13 +51,18 @@ export default function DialogModal() {
         aria-describedby="alert-dialog-slide-description"
         fullWidth={true}
       >
-        <DialogTitle className={`${styles.header} ${styles.dialog_info}`}>
+        <DialogTitle
+          className={`${styles.header} ${styles.dialog_info}`}
+          fontSize={"20px"}
+        >
           {dialog.header}
         </DialogTitle>
         <DialogContent className={styles.body}>
           {dialog.msgs &&
             dialog.msgs.map((msg, i) => (
               <DialogContentText
+                fontSize={"16px"}
+                style={{ marginBottom: "20px"}}
                 className={styles.msg}
                 id="alert-dialog-slide-description"
                 key={i}
