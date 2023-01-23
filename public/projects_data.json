@@ -29,9 +29,7 @@
             {
               "type": "likert",
               "question": "When you are ready, select Ready and press Next to begin testing.",
-              "options": [
-                { "id": "1", "text": "Ready" }
-              ]
+              "options": [{ "id": "1", "text": "Ready" }]
             }
           ]
         }
@@ -40,7 +38,10 @@
         "instructions": {
           "header": "Scenario 0",
           "msgs": [
-            { "type": "info", "msg": "Please connect to your Marty and open the Sensors Dashboard." },
+            {
+              "type": "info",
+              "msg": "Please connect to your Marty and open the Sensors Dashboard."
+            },
             {
               "type": "info",
               "msg": "Press the HELP button on the top of the screen an read the Sensors Dashboard instructions."
@@ -73,7 +74,10 @@
         "instructions": {
           "header": "Scenario 1",
           "msgs": [
-            { "type": "info", "msg": "Clear everything from the last scenario and start with a blank figure." },
+            {
+              "type": "info",
+              "msg": "Clear everything from the last scenario and start with a blank figure."
+            },
             {
               "type": "info",
               "msg": "Capture the red/green/blue values of the colour sensor"
@@ -127,6 +131,149 @@
         "instructions": {
           "header": "Scenario 2",
           "msgs": [
+            {
+              "type": "info",
+              "msg": "Clear everything from the last scenario and start with a blank figure."
+            },
+            {
+              "type": "info",
+              "msg": "Capture the red, green, and blue values of the colour sensor and plot them on separate graphs."
+            }
+          ]
+        },
+        "questionnaire": {
+          "header": "Questionnaire",
+          "qstns": [
+            { "type": "likert", "question": "How intuitive is the interface?" },
+            {
+              "type": "text",
+              "question": "If it is not, what can be changed?"
+            },
+            {
+              "type": "multiple",
+              "question": "Which value was higher when you were doing the experiment?",
+              "options": [
+                { "id": "1", "text": "Red" },
+                { "id": "2", "text": "Green" },
+                { "id": "3", "text": "Blue" }
+              ]
+            },
+            {
+              "type": "likert",
+              "question": "How complex you found the scenario?"
+            },
+            { "type": "text", "question": "Did you find any bugs or issues?" },
+            { "type": "text", "question": "Other comments?" }
+          ]
+        }
+      },
+
+      {
+        "instructions": {
+          "header": "Scenario 3",
+          "msgs": [
+            {
+              "type": "info",
+              "msg": "Using the IR foot sensor, plot whether or not Marty is on the Air."
+            }
+          ]
+        },
+        "questionnaire": {
+          "header": "Questionnaire",
+          "qstns": [
+            {
+              "type": "multiple",
+              "question": "Which sensor input did you use in this scenario?",
+              "options": [
+                { "id": "1", "text": "Touch" },
+                { "id": "2", "text": "Air" },
+                { "id": "3", "text": "Touch_IR" },
+                { "id": "4", "text": "Air_IR" },
+                { "id": "5", "text": "Touch_Ambient" },
+                { "id": "6", "text": "Air_Ambient" }
+              ]
+            },
+            { "type": "likert", "question": "How difficult you found this?" },
+            {
+              "type": "text",
+              "question": "If you found it difficult, why do you think that is?"
+            },
+            { "type": "text", "question": "Other comments?" }
+          ]
+        }
+      },
+
+      {
+        "instructions": {
+          "header": "Scenario 4",
+          "msgs": [
+            {
+              "type": "info",
+              "msg": "Using the Accelerometer, draw something by moving Marty around."
+            }
+          ]
+        },
+        "questionnaire": {
+          "header": "Questionnaire",
+          "qstns": [
+            { "type": "likert", "question": "How difficult you found this?" },
+            {
+              "type": "text",
+              "question": "If you found that difficult, why do you think that is?"
+            },
+            { "type": "text", "question": "Other comments?" }
+          ]
+        }
+      },
+
+      {
+        "instructions": {
+          "header": "Scenario 5",
+          "msgs": [
+            {
+              "type": "info",
+              "msg": "Using the Motor position, draw something by moving Marty's parts."
+            }
+          ]
+        },
+        "questionnaire": {
+          "header": "Questionnaire",
+          "qstns": [
+            { "type": "likert", "question": "How difficult you found this?" },
+            {
+              "type": "text",
+              "question": "If you found that difficult, why do you think that is?"
+            },
+            { "type": "text", "question": "Other comments?" }
+          ]
+        }
+      },
+
+      {
+        "instructions": {
+          "header": "Scenario 6",
+          "msgs": [{ "type": "info", "msg": "Export the data of a graph." }]
+        },
+        "questionnaire": {
+          "header": "Questionnaire",
+          "qstns": [
+            {
+              "type": "likert",
+              "question": "How much intuitive is the data format?"
+            },
+            {
+              "type": "text",
+              "question": "What could improve the format of the data?"
+            },
+            { "type": "text", "question": "Other comments?" }
+          ]
+        }
+      },
+
+      {
+        "instructions": {
+          "header": "Scenario 7",
+          "msgs": [
             { "type": "info", "msg": "Please open the Sensors Dashboard." },
             {
               "type": "info",
@@ -172,7 +319,10 @@
         "instructions": {
           "header": "General Feedback",
           "msgs": [
-            { "type": "info", "msg": "Following, we'd like your opinion on a few general questions on the Sensors Dashboard" },
+            {
+              "type": "info",
+              "msg": "Following, we'd like your opinion on a few general questions on the Sensors Dashboard"
+            },
             {
               "type": "success",
               "msg": "Click Next to continue"

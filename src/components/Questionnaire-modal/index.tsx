@@ -80,6 +80,18 @@ export default function QuestionnaireModal() {
     setCurrentPhase(currentPhase + 1);
   };
 
+  const handleHide = (
+    event: {},
+    reason: "backdropClick" | "escapeKeyDown" | "closeClick"
+  ) => {
+    if (reason === "backdropClick" || reason === "escapeKeyDown") {
+      return;
+    }
+    dispatch(hideQuestionnaire({}));
+  };
+
+
+
   return (
     <div
       style={{
@@ -107,6 +119,9 @@ export default function QuestionnaireModal() {
             ))}
         </DialogContent>
         <DialogActions>
+        <Button onClick={() => handleHide({}, "closeClick")}>
+            Go Back
+          </Button>
           <Button onClick={() => handleClose({}, "closeClick")}>
             {questionnaire.next ? "Next" : "Close"}
           </Button>

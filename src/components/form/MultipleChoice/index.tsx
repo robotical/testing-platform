@@ -16,7 +16,7 @@ export default function MultipleChoice({
 }: MultipleChoiceProps) {
     return (
         <div className={styles.multipleChoice}>
-            <div className={styles.question}>{answerIdx}) {question}</div>
+            <div className={styles.question}>{answerIdx+1}) {question}</div>
             <div className={styles.options}>
                 {options.map((option, idx) => (
                     <div key={idx} className={styles.option}>
