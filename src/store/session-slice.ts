@@ -24,6 +24,7 @@ export type SessionType = {
   durationInMins: number;
   phases: PhaseType[];
   finished: boolean;
+  viewed?: boolean;
 };
 
 const initialState: SessionType = {

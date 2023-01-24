@@ -66,7 +66,9 @@ export default function IndividualSessions({
               }`}
               onClick={() => handleSelectSession(sessionId)}
             >
-              {sessionId}
+              {project[sessionId].id} {type==="individual" ? 
+              project[sessionId].viewed ? "(Viewed)" : "(New)"
+              : ""}
             </button>
           ))}
         </div>

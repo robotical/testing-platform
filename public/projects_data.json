@@ -15,7 +15,7 @@
             },
             {
               "type": "info",
-              "msg": "Withe the instructions, there are x phases in Total. Please complete all of them."
+              "msg": "There are 7 scenarios in Total. Please complete all of them."
             },
             {
               "type": "success",
@@ -61,10 +61,6 @@
             },
             {
               "type": "text",
-              "question": "If not, what can be changed?"
-            },
-            {
-              "type": "text",
               "question": "Other comments?"
             }
           ]
@@ -85,10 +81,6 @@
             {
               "type": "info",
               "msg": "Place Marty on a green surface. Is the green trace value higher than the other two?"
-            },
-            {
-              "type": "info",
-              "msg": "Clean the graph you created."
             }
           ]
         },
@@ -285,7 +277,7 @@
             },
             {
               "type": "success",
-              "msg": "The goal of this scenario is to test that there is no interference between graphs. We wish to ensure that each graph operates independently and cannot be effected by commands issued to alternate graphs.  "
+              "msg": "The goal of this scenario is to test that there is no interference between graphs. We wish to ensure that each graph operates independently and cannot be affected by commands issued to alternate graphs.  "
             }
           ]
         },
@@ -342,7 +334,7 @@
             },
             {
               "type": "text",
-              "question": "Do you feel this product has limitation to its use?"
+              "question": "Do you feel this product has limitations to its use?"
             },
             {
               "type": "text",
