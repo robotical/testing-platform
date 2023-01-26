@@ -148,7 +148,12 @@ export const ProjectEditSlice = createSlice({
   initialState,
   reducers: {
     setNewProject(state) {
-      state = EMPTY_PROJECT;
+      const newProject = JSON.parse(JSON.stringify(EMPTY_PROJECT));
+      state.description = newProject.description;
+      state.name = newProject.name;
+      state.phases = newProject.phases;
+      state.url = newProject.url;
+      state.id = newProject.id;
     },
     setProject(state, action: SetProjectAction) {
       const newProject = action.payload;

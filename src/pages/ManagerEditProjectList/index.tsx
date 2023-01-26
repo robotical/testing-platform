@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux";
 import { setRouter } from "../../store/router-slice";
 import { ManagerEditProjectProps } from "../ManagerEditProject";
 import { GoDiffAdded } from "react-icons/go";
+import { setNewProject } from "../../store/project-edit-slice";
 
 export default function ManagerEditProjectList() {
   const [projects, setProjects] = useState<string[]>([]);
@@ -25,9 +26,18 @@ export default function ManagerEditProjectList() {
   const dispatch = useDispatch();
 
   const addProjectHandler = () => {
-    dispatch(setRouter({ id: "manager-edit-project" }));
+    dispatch(setNewProject());
+    dispatch(
+      setRouter({
+        id: "manager-edit-project",
+        props: {
+          projectProp: null,
+          newOrEdit: "new",
+        } as ManagerEditProjectProps,
+      })
+    );
   };
-  
+
   useEffect(() => {
     // get projects
     DatabaseManager.getProjects().then(({ projectNames, fullProjects }) => {
@@ -41,7 +51,10 @@ export default function ManagerEditProjectList() {
     dispatch(
       setRouter({
         id: "manager-edit-project",
-        props: { projectProp: fullPrjcts[project] } as ManagerEditProjectProps,
+        props: {
+          projectProp: fullPrjcts[project],
+          newOrEdit: "edit",
+        } as ManagerEditProjectProps,
       })
     );
   };

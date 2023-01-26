@@ -4,8 +4,8 @@ import MainDetails from "../../components/new-project-form/MainDetails";
 import Phases from "../../components/new-project-form/Phases";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../store";
-import { useEffect, useState } from "react";
-import { setNewProject, setProject } from "../../store/project-edit-slice";
+import { useEffect } from "react";
+import { setProject } from "../../store/project-edit-slice";
 import { resetExpandedSections } from "../../store/expanded-sections-slice";
 import validateFullProject from "../../validation/edited-project-validation";
 import { showDialog } from "../../store/dialog-slice";
@@ -13,7 +13,8 @@ import DialogModal from "../../components/dialog-modal";
 import DatabaseManager from "../../db/DatabaseManager";
 
 export type ManagerEditProjectProps = {
-  projectProp: ProjectDbType;
+  projectProp: ProjectDbType | null;
+  newOrEdit: "new" | "edit";
 };
 
 export enum FormElementNames {
@@ -36,21 +37,17 @@ export enum FormElementNames {
 
 export default function ManagerEditProject({
   projectProp,
+  newOrEdit
 }: ManagerEditProjectProps) {
   const project = useSelector((state: IRootState) => ({
     ...state.projectEditSlice,
   }));
   const dispatch = useDispatch();
-  const [newOrEdit, setNewOrEdit] = useState<"new" | "edit">("edit");
 
   useEffect(() => {
-    if (projectProp) {
+    if (newOrEdit === "edit") {
       dispatch(setProject(JSON.parse(JSON.stringify(projectProp))));
-      setNewOrEdit("edit");
-    } else {
-      dispatch(setNewProject());
-      setNewOrEdit("new");
-    }
+    } 
     dispatch(resetExpandedSections());
   }, [projectProp]);
 
