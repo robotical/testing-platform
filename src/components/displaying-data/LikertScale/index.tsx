@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Plot from "react-plotly.js";
 import { QuestionOptionsType } from "../../../store/questionnaire-slice";
-import getFrequency from "../../../utils/array/get-frequency";
+import { getFrequencyOfAnswers } from "../../../utils/array/get-frequency";
 import DEFAULT_OPTIONS from "../../../utils/likert-fallback-values";
 
 interface Props {
   categories: QuestionOptionsType[] | undefined;
   answers: string[];
   title: string;
+  sessionIds: string[];
 }
 
-const BarGraph: React.FC<Props> = ({ categories, title, answers }) => {
+const BarGraph: React.FC<Props> = ({ categories, title, answers, sessionIds }) => {
   const [data, setData] = useState({});
 
 
@@ -25,14 +26,17 @@ const BarGraph: React.FC<Props> = ({ categories, title, answers }) => {
     }
     
     // transform answers to frequency object
-    const answersFreq = getFrequency(answers);
+    const answersFreq = getFrequencyOfAnswers(answers, sessionIds);
     // transform frequency object to array with the same order as the categories
-    let plotAnswers = plotCategories.map((category) => answersFreq[category] || 0);
+    const plotAnswers = plotCategories.map((category) => answersFreq[category]?.freq || 0);
+    const plotText = plotCategories.map((category) => answersFreq[category]?.sessionIds.join("<br>") || []);
 
     setData({
       type: "bar",
       x: plotCategories,
       y: plotAnswers,
+      text: plotText,
+      textposition: "none",
       name: "Answers",
       marker: {
         color: "#4285f4",

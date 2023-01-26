@@ -10,7 +10,7 @@ export default function Manager() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password === "martyRocks") {
-      dispatch(setRouter({ id: "manager-index" }));
+      dispatch(setRouter({ id: "manager-select" }));
     }
   };
   return (

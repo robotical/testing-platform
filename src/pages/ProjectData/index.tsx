@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import DatabaseManager from "../../db/DatabaseManager";
 import { DbProject } from "../../interfaces/sessions";
 import convertProjectType from "../../utils/get-average-session";
-import IndividualSessions from "./IndividualSessions";
+import IndividualSessions from "../../components/ProjectData/IndividualSessions";
 import styles from "./styles.module.css";
 
 export type ProjectDataProps = {
@@ -11,11 +10,6 @@ export type ProjectDataProps = {
 
 export default function ProjectData({ project }: ProjectDataProps) {
   const [view, setView] = useState<"all" | "average">("all");
-
-  useEffect(() => {
-    // flag all the sessions as viewed
-    DatabaseManager.markSessionsAsViewed(project[Object.keys(project)[0]].project);
-  }, []);
 
   return (
     <div className={styles.dashboard_layout}>

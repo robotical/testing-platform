@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import RadioButton from "../../components/form/RadioButton";
 import DatabaseManager from "../../db/DatabaseManager";
-import { ProjectDbType } from "../../interfaces/project";
+import { ProjectDbType, ProjectsDbType } from "../../interfaces/project";
 import { setRouter } from "../../store/router-slice";
 import { getProjectById } from "../../utils/projects";
 import { TestingProjectProps } from "../TestingProject";
@@ -10,12 +10,14 @@ import styles from "./styles.module.css";
 
 export default function Tester() {
   const [selectedProject, setSelectedProject] = useState<ProjectDbType>();
-  const [projects, setProjects] = useState<ProjectDbType[]>([]);
+  const [projects, setProjects] = useState<string[]>([]);
+  const [fullPrjcts, setFullPrjcts] = useState<ProjectsDbType>({});
   const dispatch = useDispatch();
 
   useEffect(() => {
-    DatabaseManager.getProjects().then((prjcts) => {
-      setProjects(prjcts);
+    DatabaseManager.getProjects().then(({ projectNames, fullProjects }) => {
+      setProjects(projectNames);
+      setFullPrjcts(fullProjects);
     });
   }, []);
 
@@ -36,18 +38,21 @@ export default function Tester() {
       <h1>Select a Project to Test</h1>
       <form onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
-          {projects.map((project, idx) => (
-            <RadioButton
-              checked={selectedProject?.id === project.id}
-              label={project.name}
-              name={project.name}
-              onChange={(e) =>
-                setSelectedProject(getProjectById(projects, e.target.value))
-              }
-              value={project.id}
-              key={idx}
-            />
-          ))}
+          {projects.map((project, idx) => {
+            const projectObj = fullPrjcts[project];
+            return (
+              <RadioButton
+                checked={selectedProject?.id === projectObj.id}
+                label={projectObj.name}
+                name={projectObj.name}
+                onChange={(e) =>
+                  setSelectedProject(projectObj)
+                }
+                value={projectObj.id}
+                key={idx}
+              />
+            );
+          })}
         </div>
         <button type="submit" className={styles.submitButton}>
           Start Testing

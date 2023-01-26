@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { AnswerType } from "../../../interfaces/answers";
 import { DbProject } from "../../../interfaces/sessions";
+import { isSessionViewed, markSessionAsViewedInTheLocalStorage } from "../../../local-storage/viewed-session-cookie";
 import { QuestionnaireActionPayloadType } from "../../../store/questionnaire-slice";
-import { stringAnswerToArray } from "../../../utils/plot/answers-transformations";
+import { stringAnswerToArray, stringIdToArray } from "../../../utils/plot/answers-transformations";
 import PlotData from "../PlotData";
 import styles from "./styles.module.css";
 
@@ -21,6 +22,10 @@ export default function IndividualSessions({
   const [selectedAnswer, setSelectedAnswer] = useState<AnswerType>();
 
   const handleSelectSession = (sessionId: string) => {
+    if (type === "individual"){
+      // mark session as viewed
+      markSessionAsViewedInTheLocalStorage(project, sessionId);
+    }
     setSelectedSession(sessionId);
     setExpandedPhases([]);
   };
@@ -43,11 +48,12 @@ export default function IndividualSessions({
     setSelectedQuestion(questionId);
     if (questionnaire.answers) {
       // transform answers to plot data
-      let plotData;
+      let plotData: AnswerType;
       if (typeof questionnaire.answers[questionIndex].answer === "object") {
         plotData = questionnaire.answers[questionIndex];
       } else {
         plotData = stringAnswerToArray(questionnaire.answers[questionIndex]);
+        plotData = stringIdToArray(plotData);
       }
       setSelectedAnswer(plotData);
     }
@@ -66,8 +72,8 @@ export default function IndividualSessions({
               }`}
               onClick={() => handleSelectSession(sessionId)}
             >
-              {project[sessionId].id} {type==="individual" ? 
-              project[sessionId].viewed ? "(Viewed)" : "(New)"
+              {sessionId} {type==="individual" ? 
+              isSessionViewed(project, sessionId) ? "(Viewed)" : "(New)"
               : ""}
             </button>
           ))}

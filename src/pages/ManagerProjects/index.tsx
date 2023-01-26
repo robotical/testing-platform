@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import RadioButton from "../../components/form/RadioButton";
 import DatabaseManager from "../../db/DatabaseManager";
-import { DbProject, DbProjects } from "../../interfaces/sessions";
+import { DbProjects } from "../../interfaces/sessions";
 import { setRouter } from "../../store/router-slice";
 import { ProjectDataProps } from "../ProjectData";
 import styles from "./styles.module.css";
@@ -10,13 +10,13 @@ import styles from "./styles.module.css";
 export default function ManagerProjects() {
   const [selectedProject, setSelectedProject] = useState<string>();
   const [projects, setProjects] = useState<string[]>([]);
-  const [fullProjects, setFullProjects] = useState<DbProjects>({});
+  const [fullPrjcts, setFullPrjcts] = useState<DbProjects>({});
   const dispatch = useDispatch();
 
   useEffect(() => {
     DatabaseManager.getSessionProjects().then(({projectNames, fullProjects}) => {
       setProjects(projectNames);
-      setFullProjects(fullProjects);
+      setFullPrjcts(fullProjects);
     });
   }, []);
 
@@ -26,7 +26,7 @@ export default function ManagerProjects() {
       dispatch(
         setRouter({
           id: "project-data",
-          props: { project: fullProjects[selectedProject] } as ProjectDataProps,
+          props: { project: fullPrjcts[selectedProject] } as ProjectDataProps,
         })
       );
     }

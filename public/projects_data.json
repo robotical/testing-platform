@@ -1,4 +1,4 @@
-[
+
   {
     "id": "Sensors Dashboard",
     "name": "Sensors Dashboard",
@@ -57,7 +57,13 @@
           "qstns": [
             {
               "type": "likert",
-              "question": "Were the instructions clear enough?"
+              "question": "Were the instructions clear enough?",
+              "options": [
+                { "id": "1", "text": "A lot" },
+                { "id": "2", "text": "A little" },
+                { "id": "3", "text": "Not really" },
+                { "id": "4", "text": "Not at all" }
+              ]
             },
             {
               "type": "text",
@@ -89,7 +95,13 @@
           "qstns": [
             {
               "type": "likert",
-              "question": "How intuitive is the interface?"
+              "question": "How intuitive is the interface?",
+              "options": [
+                { "id": "1", "text": "A lot" },
+                { "id": "2", "text": "A little" },
+                { "id": "3", "text": "Not really" },
+                { "id": "4", "text": "Not at all" }
+              ]
             },
             {
               "type": "text",
@@ -106,7 +118,13 @@
             },
             {
               "type": "likert",
-              "question": "How complex you found the scenario?"
+              "question": "How complex you found the scenario?",
+              "options": [
+                { "id": "1", "text": "A lot" },
+                { "id": "2", "text": "A little" },
+                { "id": "3", "text": "Not really" },
+                { "id": "4", "text": "Not at all" }
+              ]
             },
             {
               "type": "text",
@@ -136,7 +154,16 @@
         "questionnaire": {
           "header": "Questionnaire",
           "qstns": [
-            { "type": "likert", "question": "How intuitive is the interface?" },
+            {
+              "type": "likert",
+              "question": "How intuitive is the interface?",
+              "options": [
+                { "id": "1", "text": "A lot" },
+                { "id": "2", "text": "A little" },
+                { "id": "3", "text": "Not really" },
+                { "id": "4", "text": "Not at all" }
+              ]
+            },
             {
               "type": "text",
               "question": "If it is not, what can be changed?"
@@ -152,7 +179,13 @@
             },
             {
               "type": "likert",
-              "question": "How complex you found the scenario?"
+              "question": "How complex you found the scenario?",
+              "options": [
+                { "id": "1", "text": "A lot" },
+                { "id": "2", "text": "A little" },
+                { "id": "3", "text": "Not really" },
+                { "id": "4", "text": "Not at all" }
+              ]
             },
             { "type": "text", "question": "Did you find any bugs or issues?" },
             { "type": "text", "question": "Other comments?" }
@@ -185,7 +218,12 @@
                 { "id": "6", "text": "Air_Ambient" }
               ]
             },
-            { "type": "likert", "question": "How difficult you found this?" },
+            { "type": "likert", "question": "How difficult you found this?", "options": [
+              { "id": "1", "text": "A lot" },
+              { "id": "2", "text": "A little" },
+              { "id": "3", "text": "Not really" },
+              { "id": "4", "text": "Not at all" }
+            ] },
             {
               "type": "text",
               "question": "If you found it difficult, why do you think that is?"
@@ -208,7 +246,12 @@
         "questionnaire": {
           "header": "Questionnaire",
           "qstns": [
-            { "type": "likert", "question": "How difficult you found this?" },
+            { "type": "likert", "question": "How difficult you found this?","options": [
+                { "id": "1", "text": "A lot" },
+                { "id": "2", "text": "A little" },
+                { "id": "3", "text": "Not really" },
+                { "id": "4", "text": "Not at all" }
+              ] },
             {
               "type": "text",
               "question": "If you found that difficult, why do you think that is?"
@@ -231,7 +274,12 @@
         "questionnaire": {
           "header": "Questionnaire",
           "qstns": [
-            { "type": "likert", "question": "How difficult you found this?" },
+            { "type": "likert", "question": "How difficult you found this?","options": [
+                { "id": "1", "text": "A lot" },
+                { "id": "2", "text": "A little" },
+                { "id": "3", "text": "Not really" },
+                { "id": "4", "text": "Not at all" }
+              ] },
             {
               "type": "text",
               "question": "If you found that difficult, why do you think that is?"
@@ -251,7 +299,12 @@
           "qstns": [
             {
               "type": "likert",
-              "question": "How much intuitive is the data format?"
+              "question": "How much intuitive is the data format?", "options": [
+                { "id": "1", "text": "A lot" },
+                { "id": "2", "text": "A little" },
+                { "id": "3", "text": "Not really" },
+                { "id": "4", "text": "Not at all" }
+              ]
             },
             {
               "type": "text",
@@ -286,15 +339,33 @@
           "qstns": [
             {
               "type": "likert",
-              "question": "How intuitive was the interface?"
+              "question": "How intuitive was the interface?",
+              "options": [
+                { "id": "1", "text": "A lot" },
+                { "id": "2", "text": "A little" },
+                { "id": "3", "text": "Not really" },
+                { "id": "4", "text": "Not at all" }
+              ]
             },
             {
               "type": "likert",
-              "question": "Functionally, was the interface easy to use?"
+              "question": "Functionally, was the interface easy to use?",
+              "options": [
+                { "id": "1", "text": "A lot" },
+                { "id": "2", "text": "A little" },
+                { "id": "3", "text": "Not really" },
+                { "id": "4", "text": "Not at all" }
+              ]
             },
             {
               "type": "likert",
-              "question": "How complex you found the scenario?"
+              "question": "How complex you found the scenario?",
+              "options": [
+                { "id": "1", "text": "A lot" },
+                { "id": "2", "text": "A little" },
+                { "id": "3", "text": "Not really" },
+                { "id": "4", "text": "Not at all" }
+              ]
             },
             {
               "type": "text",
@@ -326,7 +397,13 @@
           "qstns": [
             {
               "type": "likert",
-              "question": "How much you enjoyed using the Dashboard?"
+              "question": "How much you enjoyed using the Dashboard?",
+              "options": [
+                { "id": "1", "text": "A lot" },
+                { "id": "2", "text": "A little" },
+                { "id": "3", "text": "Not really" },
+                { "id": "4", "text": "Not at all" }
+              ]
             },
             {
               "type": "text",
@@ -353,4 +430,4 @@
       }
     ]
   }
-]
+

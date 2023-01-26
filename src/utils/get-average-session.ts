@@ -2,7 +2,6 @@ import { DbProject } from "../interfaces/sessions";
 
 // given a DbProject, return the average session of DbProject sessions in a DbProject object
 function transformProject(project: DbProject): DbProject {
-
   const sessionIds = Object.keys(project);
   let totalDuration = 0;
   for (const sessionId of sessionIds) {
@@ -33,6 +32,7 @@ function transformProject(project: DbProject): DbProject {
   avgSession.phases.forEach((phase) => {
     phase.questionnaire.answers?.forEach((answer) => {
       answer.answer = [];
+      answer.sessionId = [];
     });
   });
 
@@ -48,6 +48,26 @@ function transformProject(project: DbProject): DbProject {
         ].questionnaire.answers![answerIndex].answer.concat(
           answer.answer as string
         );
+
+        if (typeof answer.answer === "object") {
+          answer.answer.forEach((answ) => {
+            averageSession["average"].phases[phaseIndex].questionnaire.answers![
+              answerIndex
+            ].sessionId = averageSession["average"].phases[
+              phaseIndex
+            ].questionnaire.answers![answerIndex].sessionId.concat(
+              answer.sessionId as string
+            );
+          });
+        } else {
+          averageSession["average"].phases[phaseIndex].questionnaire.answers![
+            answerIndex
+          ].sessionId = averageSession["average"].phases[
+            phaseIndex
+          ].questionnaire.answers![answerIndex].sessionId.concat(
+            answer.sessionId as string
+          );
+        }
       });
     });
   }

@@ -4,6 +4,8 @@ import userRole, { UserRole } from "./user-role-slice";
 import routerSlice, { RouterType } from "./router-slice";
 import questionnaire, { QuestionnaireType } from "./questionnaire-slice";
 import sessionSlice, { SessionType } from "./session-slice";
+import projectEditSlice, { ProjectEditType } from "./project-edit-slice";
+import expandedSectionsSlice, {ExpandedSectionsType} from "./expanded-sections-slice";
 
 export interface IRootState {
   dialog: DialogType;
@@ -11,6 +13,8 @@ export interface IRootState {
   routerSlice: RouterType;
   questionnaire: QuestionnaireType;
   sessionSlice: SessionType;
+  projectEditSlice: ProjectEditType;
+  expandedSectionsSlice: ExpandedSectionsType;
 }
 
 const rootReducer = {
@@ -19,6 +23,8 @@ const rootReducer = {
   routerSlice,
   questionnaire,
   sessionSlice,
+  projectEditSlice,
+  expandedSectionsSlice,
 };
 
 const store = configureStore({

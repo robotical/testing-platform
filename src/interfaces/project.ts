@@ -12,4 +12,9 @@ export type ProjectDbType = {
     description: string;
     url: string;
     phases: PhaseType[];
+    [key: string]: string | PhaseType[];
+};
+
+export type ProjectsDbType = {
+    [projectName: string]: ProjectDbType;
 };
